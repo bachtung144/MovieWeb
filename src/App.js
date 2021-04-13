@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from "react";
+import {Search} from "./components/Search";
+import {Results} from "./components/Results";
 
-function App() {
+export const App = () =>{
+  const [input,setInput] = useState('');
+  const [results,setResults] = useState([]);
+  const apiUrl = "https://www.omdbapi.com/?i=tt3896198&apikey=2911792a";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <header>
+          <h1>Movie Database</h1>
+        </header>
+
+        <main>
+          <Search
+              apiUrl={apiUrl}
+              input={input}
+              onInputChange={value => setInput(value)}
+              onSearch={value => setResults(value)}
+          />
+          <Results results={results} />
+        </main>
+      </div>
   );
 }
 
-export default App;
