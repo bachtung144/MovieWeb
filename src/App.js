@@ -5,7 +5,6 @@ import {Results} from "./components/Results";
 export const App = () =>{
   const [results,setResults] = useState([]);
 
-
   return (
       <div className="App">
         <header>
