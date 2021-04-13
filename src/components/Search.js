@@ -1,10 +1,11 @@
-import React,{Fragment} from "react"
+import React,{Fragment,useState} from "react"
 import axios from "axios";
 
-export const Search = ({apiUrl,input,onSearch,onInputChange}) => {
+export const Search = ({apiUrl,onSearch}) => {
+    const [input,setInput] = useState('');
 
     const handleInput = (e) => {
-        onInputChange(e.target.value);
+        setInput(e.target.value);
     };
 
     const handleSearch = (e) => {
