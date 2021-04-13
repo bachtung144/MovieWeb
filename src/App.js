@@ -4,7 +4,7 @@ import {Results} from "./components/Results";
 
 export const App = () =>{
   const [results,setResults] = useState([]);
-  const apiUrl = "https://www.omdbapi.com/?i=tt3896198&apikey=2911792a";
+
 
   return (
       <div className="App">
@@ -14,7 +14,6 @@ export const App = () =>{
 
         <main>
           <Search
-              apiUrl={apiUrl}
               onSearch={value => setResults(value)}
           />
           <Results results={results} />

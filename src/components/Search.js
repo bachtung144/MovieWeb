@@ -1,7 +1,7 @@
 import React,{Fragment,useState} from "react"
 import axios from "axios";
 
-export const Search = ({apiUrl,onSearch}) => {
+export const Search = ({onSearch}) => {
     const [input,setInput] = useState('');
 
     const handleInput = (e) => {
@@ -9,6 +9,7 @@ export const Search = ({apiUrl,onSearch}) => {
     };
 
     const handleSearch = (e) => {
+        const apiUrl = "https://www.omdbapi.com/?i=tt3896198&apikey=2911792a";
         let query = `${apiUrl}&s=${input}`;
         if (e.key === "Enter") {
             axios(query)
