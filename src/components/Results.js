@@ -1,23 +1,23 @@
-import React from "react"
-import {Card} from "./Card";
+import React from "react";
+import { MovieCard } from "./MovieCard";
+import { Container, Row, Col } from "react-bootstrap";
 
-export const Results = ({results}) => {
-    return(
-        <section className="results-section">
-            <div className="container">
-                <div
-                    className="card-columns row"
-                    style={{justifyContent: "center"}}
-                >
-                    {results ? (
-                        results.map((item) => (
-                            <Card key={item?.imdbID} item={item}></Card>
-                        ))
-                    ) : (
-                        <div>NOT FOUND</div>
-                    )}
-                </div>
-            </div>
-        </section>
-    )
-}
+export const Results = ({ results }) => {
+  return (
+    <section className="results-section">
+      <Container>
+        <Row>
+          {results ? (
+            results.map((item) => (
+              <Col md={4}>
+                <MovieCard key={item?.imdbID} item={item}></MovieCard>
+              </Col>
+            ))
+          ) : (
+            <div>NOT FOUND</div>
+          )}
+        </Row>
+      </Container>
+    </section>
+  );
+};
