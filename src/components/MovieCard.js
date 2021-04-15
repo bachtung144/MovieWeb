@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Card, Button, Modal, Container, Image } from "react-bootstrap";
-// import Detail from "./Detail";
 
 export const MovieCard = ({ item }) => {
   const [show, setShow] = useState(false);
@@ -8,7 +7,6 @@ export const MovieCard = ({ item }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = (movie) => {
-    console.log(movie);
     setRecord(movie);
     setShow(true);
   };
@@ -37,7 +35,7 @@ export const MovieCard = ({ item }) => {
                 fluid
               />
             </div>
-            <div className="movie__card-descrition">
+            <div className="movie__card-description">
               <div>
                 <b>Description: </b>
               </div>
