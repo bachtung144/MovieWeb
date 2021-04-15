@@ -1,29 +1,75 @@
 import React, { useState } from "react";
-import { Card, Button, Modal } from "react-bootstrap";
+import { Card, Button, Modal, Container, Image } from "react-bootstrap";
 // import Detail from "./Detail";
 
 export const MovieCard = ({ item }) => {
-  // const [showDetail, setShowDetail] = useState(false);
-  // const showDetail = () => {
-  //   setShowDetail(true);
-  // };
+  const [show, setShow] = useState(false);
+  const [record, setRecord] = useState();
+
+  const handleClose = () => setShow(false);
+  const handleShow = (movie) => {
+    console.log(movie);
+    setRecord(movie);
+    setShow(true);
+  };
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{record?.Title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <Container>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: "1rem",
+              }}
+            >
+              <Image
+                style={{
+                  overflow: "hidden",
+                  borderRadius: "10px",
+                  boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+                }}
+                src={record?.Poster}
+                fluid
+              />
+            </div>
+            <div className="movie__card-descrition">
+              <div>
+                <b>Description: </b>
+              </div>
+              You're reading this text in a modal!. Some quick example text to
+              build on the card title and make up the bulk of the card's
+              content.
+            </div>
+
+            <div className="movie__card-info">
+              <div>
+                <b>Movie info: </b>
+              </div>
+              <div style={{ display: "flex" }}>
+                <div style={{ width: "32%", textAlign: "center" }}>
+                  <b>Year: </b>
+                  {record?.Year}
+                </div>
+                <div style={{ width: "32%", textAlign: "center" }}>
+                  <b>imdbID: </b>
+                  {record?.imdbID}
+                </div>
+                <div style={{ width: "32%", textAlign: "center" }}>
+                  <b>Type: </b>
+                  {record?.Type}
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
@@ -55,7 +101,9 @@ export const MovieCard = ({ item }) => {
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </Card.Text>
-          <Button variant="primary">See movie detail</Button>
+          <Button variant="primary" onClick={() => handleShow(item)}>
+            See movie detail
+          </Button>
         </Card.Body>
       </Card>
     </>
